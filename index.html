@@ -29,7 +29,7 @@
         <div class="row">
         <div class="input-label-container">
           <label class="input-label" for="bill">Bill</label>
-          <p class="alert"></p>
+          <p class="alert" id="alert-bill-error"></p>
         </div>
         <span id="bill-pseudo"></span><input
           class="input"
@@ -42,9 +42,9 @@
         <div class="row">
         <div class="input-label-container">
           <p class="input-label">Select Tip %</p>
-          <p class="alert"></p>
+          <p class="alert" id="alert-tip-error"></p>
         </div>
-        <fieldset class="button-container">
+        <fieldset class="button-container" id="tip-options">
           <input type="radio" name="percent" tabindex="-1" id="5" value="5">
           <label class="btn btn-primary" tabindex="0" for="5">5%</label>
           <input type="radio" name="percent" tabindex="-1" id="10" value="10">
@@ -59,6 +59,7 @@
             type="text"
             inputmode="numeric"
             class="input btn-input"
+            id="custom"
             placeholder="Custom"
           />
         </fieldset>
@@ -66,7 +67,7 @@
       <div class="row">
         <div class="input-label-container">
           <label class="input-label" for="people">Number of People</label>
-          <p class="alert"></p>
+          <p class="alert" id="alert-people-error"></p>
         </div>
         <span id="people-pseudo"></span><input
           class="input"
@@ -84,17 +85,17 @@
             <p class="output-label">Tip Amount</p>
             <p class="output-label-small">/ person</p>
           </div>
-          <p class="output-amount">$0.00</p>
+          <p class="output-amount" id="display-tip">$0.00</p>
         </div>
         <div class="output-row-container">
           <div class="output-label-container">
             <p class="output-label">Total</p>
             <p class="output-label-small">/ person</p>
           </div>
-          <p class="output-amount">$0.00</p>
+          <p class="output-amount" id="display-total">$0.00</p>
         </div>
       </div>
-        <button type="button" class="btn btn-reset" id="btn-reset">Reset</button>
+        <button type="button" class="btn btn-reset" id="btn-reset" disabled="true">Reset</button>
       </div>
       </div>
     </div>
