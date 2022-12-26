@@ -5,6 +5,7 @@ const body = document.querySelector("body")
 const classDisabled = "disabled"
 const classInvalid = "invalid"
 const queryInputRadio = 'input[type="radio"]'
+const queryInputRadioLabel = "label.btn.btn-primary"
 const regexNumeralsDecimalsOnly = /[^0-9.]/g
 const regexNumeralsOnly = /[^0-9]/g
 
@@ -49,8 +50,8 @@ billInput.addEventListener("input", e => {
   // Force the input value to two decimals
   const inputValue =
     filteredInput.indexOf(".") >= 0
-      ? filteredInput.substr(0, filteredInput.indexOf(".")) +
-        filteredInput.substr(filteredInput.indexOf("."), 3)
+      ? filteredInput.substr(0, filteredInput.indexOf(".") + 1) +
+        filteredInput.substr(filteredInput.indexOf(".") + 1, 2).replace(".", "")
       : filteredInput
   billInput.value = inputValue
 
@@ -95,13 +96,30 @@ function handlePeopleError(message) {
 // Event listeners (tip amounts)
 
 tipOptionsFieldset.addEventListener("click", e => {
+  handleRadioEvent(e)
+})
+
+// Make radio buttons keyboard accessible
+tipOptionsFieldset.addEventListener("keyup", e => {
+  if (e.key === "Enter") {
+    handleRadioEvent(e)
+  }
+})
+
+function handleRadioEvent(e) {
+  console.log(e.target)
   if (e.target === customPercentBtn) {
     unsetAllRadios()
   }
   if (e.target.matches(queryInputRadio)) {
     calculateTip(Number(e.target.value))
   }
-})
+  // Check for enter key pressed on radio buttons
+  if (e.target.matches(queryInputRadioLabel)) {
+    const valueString = e.target.innerText.slice(0, -1)
+    calculateTip(Number(valueString))
+  }
+}
 
 customPercentBtn.addEventListener("input", e => {
   const inputValue = customPercentBtn.value

@@ -364,7 +364,8 @@ input:checked + .btn-primary {
   cursor: pointer;
 }
 
-.btn-reset:not(:disabled):hover {
+.btn-reset:not(:disabled):hover,
+.btn-reset:not(:disabled):focus {
   background-color: var(--clr-btn-highlight);
 }
 
