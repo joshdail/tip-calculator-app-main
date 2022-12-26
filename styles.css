@@ -106,16 +106,44 @@ body {
   align-items: center;
 }
 
+/* Dark mode support */
+
+body[data-display="dark"] {
+  --clr-background-body: hsl(185, 41%, 4%);
+  --clr-background-calculator: hsl(184, 27%, 22%);
+  --clr-background-input: hsl(189, 41%, 7%);
+  --clr-text-alert: hsl(45, 87%, 59%);
+  --clr-text-dark: hsl(183, 60%, 10%);
+  --clr-text-faded: hsl(0, 0%, 100%);
+}
+
+[data-display="dark"] .title {
+  color: var(--clr-btn-highlight);
+  opacity: 1;
+}
+
+[data-display="dark"] .input.btn-input::placeholder {
+  color: var(--clr-text-placeholder);
+}
+
+[data-display="dark"] .input {
+  color: var(--clr-text-faded);
+}
+
+/* Title */
+
 .title {
   text-transform: uppercase;
   text-align: center;
   font-size: var(--fs-normal);
   color: var(--clr-text-dark);
   opacity: 0.75;
-  margin-top: 5em;
+  margin-top: 2em;
   margin-bottom: 3em;
   letter-spacing: 0.4em;
 }
+
+/* Main section styling */
 
 .calculator {
   background-color: var(--clr-background-calculator);
@@ -229,8 +257,8 @@ body {
   pointer-events: none;
 }
 
-.btn {
-  width: 100%;
+.btn,
+.btn-display-toggle {
   text-align: center;
   border: none;
   outline: none;
@@ -243,13 +271,39 @@ body {
   color: var(--clr-text-white);
 }
 
+.btn-display-toggle {
+  background: none;
+  color: var(--clr-text-dark);
+  position: fixed;
+  top: 0.5em;
+  left: 0.5em;
+  font-size: var(--fs-reduced);
+  letter-spacing: 0.25em;
+}
+
+.btn-display-toggle:hover,
+.btn-display-toggle:focus {
+  background-color: var(--clr-text-dark);
+  color: var(--clr-btn-highlight);
+}
+
+[data-display="dark"] .btn-display-toggle {
+  color: var(--clr-btn-highlight);
+}
+
+[data-display="dark"] .btn-display-toggle:hover,
+[data-display="dark"] .btn-display-toggle:focus {
+  background-color: var(--clr-btn-highlight);
+  color: var(--clr-text-dark);
+}
 .btn-primary,
 .btn-input {
   padding-top: 0.2em;
   padding-bottom: 0.2em;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus {
   background-color: var(--clr-btn-highlight);
   color: var(--clr-text-dark);
 }
@@ -327,6 +381,10 @@ input:checked + .btn-primary {
 }
 .attribution a {
   color: var(--clr-text-dark);
+}
+
+[data-display="dark"] .attribution a {
+  color: var(--clr-btn-highlight);
 }
 
 /* Resize for mobile */

@@ -20,7 +20,8 @@
     <link rel="stylesheet" href="styles.css" />
     <title>Frontend Mentor | Tip calculator app</title>
   </head>
-  <body>
+  <body data-display="light">
+    <button type="button" aria-label="Toggle light or dark mode" class="btn-display-toggle">&#9728;|&#9790;</button>
     <h1 class="title">Spli<br />tter</h1>
     <div class="calculator">
       <div class="input-container">
@@ -43,16 +44,16 @@
           <p class="alert"></p>
         </div>
         <fieldset class="button-container">
-          <input type="radio" name="percent" id="5" value="5">
-          <label class="btn btn-primary" for="5">5%</label>
-          <input type="radio" name="percent" id="10" value="10">
-          <label class="btn btn-primary" for="10">10%</label>
-          <input type="radio" name="percent" id="15" value="15">
-          <label class="btn btn-primary" for="15">15%</label>
-          <input type="radio" name="percent" id="25" value="25">
-          <label class="btn btn-primary" for="25">25%</label>
-          <input type="radio" name="percent" id="50" value="50">
-          <label class="btn btn-primary" for="50">50%</label>
+          <input type="radio" name="percent" tabindex="-1" id="5" value="5">
+          <label class="btn btn-primary" tabindex="0" for="5">5%</label>
+          <input type="radio" name="percent" tabindex="-1" id="10" value="10">
+          <label class="btn btn-primary" tabindex="0" for="10">10%</label>
+          <input type="radio" name="percent" tabindex="-1" id="15" value="15">
+          <label class="btn btn-primary" tabindex="0" for="15">15%</label>
+          <input type="radio" name="percent" tabindex="-1" id="25" value="25">
+          <label class="btn btn-primary" tabindex="0" for="25">25%</label>
+          <input type="radio" name="percent" tabindex="-1" id="50" value="50">
+          <label class="btn btn-primary" tabindex="0" for="50">50%</label>
           <input
             type="text"
             inputmode="numeric"
