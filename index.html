@@ -1,44 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Tip calculator app</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-
-  Bill
-
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
-
-  Number of People
-
-  Tip Amount
-  / person
-
-  Total
-  / person
-
-  Reset
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&family=Space+Mono:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Frontend Mentor | Tip calculator app</title>
+  </head>
+  <body>
+    <h1 class="title">Spli<br />tter</h1>
+    <div class="calculator">
+      <div class="input-container">
+        <div class="row">
+        <div class="input-label-container">
+          <label class="input-label" for="bill">Bill</label>
+          <p class="alert"></p>
+        </div>
+        <span id="bill-pseudo"></span><input
+          class="input"
+          id="bill"
+          type="text"
+          inputmode="numeric"
+          placeholder="0"
+        />
+      </div>
+        <div class="row">
+        <div class="input-label-container">
+          <p class="input-label">Select Tip %</p>
+          <p class="alert"></p>
+        </div>
+        <fieldset class="button-container">
+          <input type="radio" name="percent" id="5" value="5">
+          <label class="btn btn-primary" for="5">5%</label>
+          <input type="radio" name="percent" id="10" value="10">
+          <label class="btn btn-primary" for="10">10%</label>
+          <input type="radio" name="percent" id="15" value="15">
+          <label class="btn btn-primary" for="15">15%</label>
+          <input type="radio" name="percent" id="25" value="25">
+          <label class="btn btn-primary" for="25">25%</label>
+          <input type="radio" name="percent" id="50" value="50">
+          <label class="btn btn-primary" for="50">50%</label>
+          <input
+            type="text"
+            inputmode="numeric"
+            class="input btn-input"
+            placeholder="Custom"
+          />
+        </fieldset>
+      </div>
+      <div class="row">
+        <div class="input-label-container">
+          <label class="input-label" for="people">Number of People</label>
+          <p class="alert"></p>
+        </div>
+        <span id="people-pseudo"></span><input
+          class="input"
+          id="people"
+          type="text"
+          inputmode="numeric"
+          placeholder="0"
+        />
+      </div>
+      </div>
+      <div class="output-container">
+        <div class="output-box-container">
+        <div class="output-row-container">
+          <div class="output-label-container">
+            <p class="output-label">Tip Amount</p>
+            <p class="output-label-small">/ person</p>
+          </div>
+          <p class="output-amount">$0.00</p>
+        </div>
+        <div class="output-row-container">
+          <div class="output-label-container">
+            <p class="output-label">Total</p>
+            <p class="output-label-small">/ person</p>
+          </div>
+          <p class="output-amount">$0.00</p>
+        </div>
+      </div>
+        <button type="button" class="btn btn-reset" id="btn-reset">Reset</button>
+      </div>
+      </div>
+    </div>
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by
+      <a href="https://github.com/joshdail" target="_blank">Josh Dail</a>.
+    </div>
+  </body>
 </html>

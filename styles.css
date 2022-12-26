@@ -1,0 +1,355 @@
+/* Reset CSS Properties */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove animations for people who've turned them off */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom properties */
+
+:root {
+  --ff-main: "Space Mono";
+
+  /* Text inputs and buttons */
+  --fs-normal: 1.5rem;
+
+  /* Tip and total amounts */
+  --fs-large: 2.5rem;
+
+  /* Reset button */
+  --fs-reduced: 1.25rem;
+
+  /* Tip amount labels, form labels */
+  --fs-small: 1rem;
+
+  /* For the /person labels */
+  --fs-extra-small: 0.8rem;
+
+  --clr-text-accent: hsl(172, 67%, 45%);
+  --clr-text-dark: hsl(183, 100%, 15%);
+  --clr-text-white: hsl(0, 0%, 100%);
+  --clr-text-faded: hsl(186, 14%, 43%);
+  --clr-text-placeholder: hsl(184, 14%, 56%);
+  --clr-text-alert: hsl(9, 31%, 58%);
+  --clr-background-body: hsl(185, 41%, 84%);
+  --clr-background-input: hsl(189, 41%, 97%);
+  --clr-background-calculator: hsl(0, 0%, 100%);
+  --clr-btn-highlight: hsl(173, 61%, 76%);
+}
+
+body {
+  height: 100vh;
+  background-color: var(--clr-background-body);
+  font-size: var(--fs-normal);
+  font-family: var(--ff-main);
+  color: var(--clr-text-faded);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: var(--fs-normal);
+  color: var(--clr-text-dark);
+  opacity: 0.75;
+  margin-top: 5em;
+  margin-bottom: 3em;
+  letter-spacing: 0.4em;
+}
+
+.calculator {
+  background-color: var(--clr-background-calculator);
+  display: flex;
+  gap: 2em;
+  padding: 1.5em;
+  border-radius: 1em;
+  width: 100%;
+  max-width: 38em;
+}
+
+.input-container,
+.output-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Styling for input (left) area */
+
+.input-container {
+  gap: 2em;
+  padding: 0.5em 0;
+}
+
+.input-label-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-label,
+.alert {
+  font-size: var(--fs-small);
+  margin-bottom: 0.5em;
+}
+
+.alert {
+  color: var(--clr-text-alert);
+}
+
+.input {
+  width: 100%;
+  padding-inline: 0.5em;
+  border: none;
+  outline: none;
+  border-radius: 0.25em;
+  background-color: var(--clr-background-input);
+  text-align: right;
+  color: var(--clr-text-dark);
+  cursor: text;
+  caret-color: var(--clr-text-accent);
+}
+
+/* SVG icons for inputs */
+
+#bill-pseudo,
+#people-pseudo {
+  position: relative;
+}
+
+#bill-pseudo::before,
+#people-pseudo::before {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0.5em;
+}
+
+#bill-pseudo::before {
+  content: url("images/icon-dollar.svg");
+}
+
+#people-pseudo::before {
+  content: url("images/icon-person.svg");
+}
+
+/* Text inputs */
+
+.input::placeholder {
+  opacity: 1;
+  color: var(--clr-text-placeholder);
+}
+
+.input.btn-input::placeholder {
+  color: var(--clr-text-faded);
+}
+
+.input:focus {
+  border: none;
+  outline: 2px solid var(--clr-text-accent);
+}
+
+.input.invalid {
+  border: none;
+  outline: 2px solid var(--clr-text-alert);
+}
+
+/* Button Grid */
+
+.button-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border: none;
+  gap: 0.5em;
+}
+
+.button-container [type="radio"] {
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn {
+  width: 100%;
+  text-align: center;
+  border: none;
+  outline: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+}
+
+.btn.btn-primary {
+  background-color: var(--clr-text-dark);
+  color: var(--clr-text-white);
+}
+
+.btn-primary,
+.btn-input {
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+}
+
+.btn-primary:hover {
+  background-color: var(--clr-btn-highlight);
+  color: var(--clr-text-dark);
+}
+
+input:checked + .btn-primary {
+  background-color: var(--clr-text-accent);
+  color: var(--clr-text-dark);
+}
+
+/* Output container styling */
+
+.output-container {
+  background-color: var(--clr-text-dark);
+  border-radius: 0.75em;
+  padding: 1.5em;
+}
+
+.output-box-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.output-row-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.output-label-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.output-label {
+  font-size: var(--fs-small);
+  color: var(--clr-text-white);
+}
+
+.output-label-small {
+  font-size: var(--fs-extra-small);
+  color: var(--clr-text-white);
+  opacity: 0.5;
+  letter-spacing: 0.05em;
+}
+
+.output-amount {
+  font-size: var(--fs-large);
+  color: var(--clr-text-accent);
+}
+
+.btn-reset {
+  font-size: var(--fs-reduced);
+  padding: 0.5em;
+  text-transform: uppercase;
+  background-color: var(--clr-text-accent);
+  color: var(--clr-text-dark);
+  cursor: pointer;
+}
+
+.btn-reset:not(.disabled):hover {
+  background-color: var(--clr-btn-highlight);
+}
+
+.btn-reset.disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+/* Frontend mentor attribution */
+.attribution {
+  font-size: var(--fs-small);
+  text-align: center;
+  margin-top: 1em;
+}
+.attribution a {
+  color: var(--clr-text-dark);
+}
+
+/* Resize for mobile */
+
+@media (width < 930px) {
+  .title {
+    margin: 1.5em 0;
+  }
+
+  .calculator {
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .button-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .output-container {
+    gap: 1em;
+  }
+
+  .output-box-container {
+    gap: 0.5em;
+  }
+}
