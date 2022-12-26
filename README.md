@@ -27,7 +27,6 @@ Users should be able to:
 - See hover states for all interactive elements on the page
 - Calculate the correct tip and total cost of the bill per person
 
-
 ### A feature I added
 
 Clicking the icon at the top left of the screen will switch the app to a dark mode.
@@ -42,8 +41,8 @@ Here's a screenshot of the app in dark mode:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://github.com/joshdail/tip-calculator-app-main](https://github.com/joshdail/tip-calculator-app-main)
+- Live Site URL: [https://joshdail.github.io/tip-calculator-app-main/](https://joshdail.github.io/tip-calculator-app-main/)
 
 ## My process
 
@@ -53,12 +52,11 @@ Here's a screenshot of the app in dark mode:
 - Vanilla Javascript (no frameworks)
 - Desktop-first workflow
 
-
 ### What I learned
 
 One challenge I came across was with placing the SVGs for the dollar sign and person icons within the input boxes. I tried adding a pseudo-class to the input to contain the SVG, but could not get it to work. After some research I learned that html inputs cannot have a ::before or ::after pseudo-class, so I ended up adding empty spans before the inputs, then attaching a ::before pseudoclass to position the SVGs:
 
-	<span id="bill-pseudo"></span><input
+    <span id="bill-pseudo"></span><input
           class="input"
           id="bill"
           type="text"
@@ -68,52 +66,52 @@ One challenge I came across was with placing the SVGs for the dollar sign and pe
 
 In the above HTML code block, the input is where the user types the amount for the bill. The span contains nothing, but is used in the CSS to position the SVG:
 
-	#bill-pseudo,
-	#people-pseudo {
-	  position: relative;
-	}
-	
-	#bill-pseudo::before,
-	#people-pseudo::before {
-	  position: absolute;
-	  z-index: 2;
-	  top: 0;
-	  left: 0.5em;
-	}
-	
-	#bill-pseudo::before {
-	  content: url("images/icon-dollar.svg");
-	}
-	
-	#people-pseudo::before {
-	  content: url("images/icon-person.svg");
-	}
+    #bill-pseudo,
+    #people-pseudo {
+      position: relative;
+    }
+
+    #bill-pseudo::before,
+    #people-pseudo::before {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0.5em;
+    }
+
+    #bill-pseudo::before {
+      content: url("images/icon-dollar.svg");
+    }
+
+    #people-pseudo::before {
+      content: url("images/icon-person.svg");
+    }
 
 When I started working on the input validation, after I got a bit of the basic validation working, I wanted to see if I could eliminate the need for some of the validation checks by filtering out as much invalid input ahead of time as possible. (For example, not even allowing the user to enter non-numeric characters, auto-limiting the decimal places to 2, etc.).
 
 After looking at a few Stack Overflow posts and experimenting with a few Regex strings on regexer.com, I was able to combine string handling and regex filtering to limit the user input. Any letters or non-numeric characters (including the minus symbol) are automatically filtered out and removed from the input. Only positive numbers are allowed, and only the bill amount input allows for decimals.
 
-	const regexNumeralsDecimalsOnly = /[^0-9.]/g
-	const regexNumeralsOnly = /[^0-9]/g
-	
+    const regexNumeralsDecimalsOnly = /[^0-9.]/g
+    const regexNumeralsOnly = /[^0-9]/g
+
 (Regex strings stored as constants)
 
-	const filteredInput = billInput.value.replace(regexNumeralsDecimalsOnly, "")
-	  // Force the input value to two decimals
-	  const inputValue =
-	    filteredInput.indexOf(".") >= 0
-	      ? filteredInput.substr(0, filteredInput.indexOf(".") + 1) +
-	        filteredInput.substr(filteredInput.indexOf(".") + 1, 2).replace(".", "")
-	      : filteredInput
-	  billInput.value = inputValue
-	
-	  const billAmount = Number(inputValue)
-	
-	  if (billAmount === 0 && billInput.value !== "") {
-	    handleBillError("Can't be zero")
-	    return
-	  }
- 
+    const filteredInput = billInput.value.replace(regexNumeralsDecimalsOnly, "")
+      // Force the input value to two decimals
+      const inputValue =
+        filteredInput.indexOf(".") >= 0
+          ? filteredInput.substr(0, filteredInput.indexOf(".") + 1) +
+            filteredInput.substr(filteredInput.indexOf(".") + 1, 2).replace(".", "")
+          : filteredInput
+      billInput.value = inputValue
+
+      const billAmount = Number(inputValue)
+
+      if (billAmount === 0 && billInput.value !== "") {
+        handleBillError("Can't be zero")
+        return
+      }
+
 The above is a snippet from an event handler. First, the regex filters out anything that is not a number or a decimal. Then, the string is cut down to only allow one decimal and two decimal places. If the input value is zero, then an error message is displayed and the tip will not be calculated.
 
 ### Continued development
@@ -130,12 +128,11 @@ I would greatly welcome any feedback on how to make this project or similar ones
 
 - [Regexer.com](//https://regexr.com/) - I found out about this site in the Javascript Simplified course by Kyle of Web Dev Simplified. I've always been a bit intimidated by Regex, and this makes experimenting with Regex much easier and understandable. A great resource.
 
-
 - [CSS Tricks Flexbox Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox) - I constantly consult this article for making sure my Flex components are set up correctly.
 
 - [Kevin Powell](https://www.kevinpowell.co/) - I have been learning a lot about CSS and design from Kevin's blog, Youtube channel, and courses. Actually found out about Frontend Mentor from him.
 
-- [Web Dev Simplified](https://blog.webdevsimplified.com/) - I really like Kyle's teaching style. Very practical and makes learning things like CSS and Javascript  far less overwhelming.
+- [Web Dev Simplified](https://blog.webdevsimplified.com/) - I really like Kyle's teaching style. Very practical and makes learning things like CSS and Javascript far less overwhelming.
 
 ## Author
 
