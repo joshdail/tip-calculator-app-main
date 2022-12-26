@@ -411,3 +411,15 @@ input:checked + .btn-primary {
     gap: 0.5em;
   }
 }
+
+/* Fix a few visual issues with very small screen sizes */
+
+@media (width < 370px) {
+  body {
+    --fs-normal: 1.2rem;
+  }
+
+  .output-row-container {
+    flex-direction: column;
+  }
+}
